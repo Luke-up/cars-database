@@ -1,13 +1,12 @@
 import React, { useEffect, useParams } from "react";
 import axios from "axios";
-import id from "./CarList";
+import { Container, InputGroup, Form, Button, Row, Col } from "react-bootstrap";
 
-function EditCar(props) {
+function EditCar() {
   const [model, setModel] = React.useState();
   const [make, setMake] = React.useState("");
   const [registrationNumber, setRegistrationNumber] = React.useState("");
   const [owner, setOwner] = React.useState("");
-  const [carObject, setCarObject] = React.useState([{}]);
 
   useEffect(() => {
     axios
@@ -19,7 +18,6 @@ function EditCar(props) {
         setMake(res.data.make);
         setRegistrationNumber(res.data.registrationNumber);
         setOwner(res.data.owner);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +32,6 @@ function EditCar(props) {
         registrationNumber: registrationNumber,
         owner: owner,
       };
-      console.log(newCar);
       axios
         .post(
           "http://localhost:5000/cars/update/" +
@@ -49,37 +46,60 @@ function EditCar(props) {
   }
 
   return (
-    <div>
-      <h1>Edit car</h1>
-      <label>Model of car : </label>
-      <input
-        onChange={(e) => setModel(e.target.value)}
-        defaultValue={model}
-        type="number"
-      />
-      <br />
-      <label>Make of car : </label>
-      <input
-        onChange={(e) => setMake(e.target.value)}
-        defaultValue={make}
-        type="text"
-      />
-      <br />
-      <label>Registration number : </label>
-      <input
-        onChange={(e) => setRegistrationNumber(e.target.value)}
-        defaultValue={registrationNumber}
-        type="text"
-      />
-      <br />
-      <label>Owner name : </label>
-      <input
-        onChange={(e) => setOwner(e.target.value)}
-        defaultValue={owner}
-        type="text"
-      />
-      <button onClick={() => submitCar()}>Submit changes</button>
-    </div>
+    <Container>
+      <Container className="bg-secondary rounded py-2 px-2">
+        <Row>
+          <Col>
+            <p className="text-light fs-3 my-auto">Add car </p>
+          </Col>
+          <Col className="text-end">
+            <Button
+              variant="outline-light"
+              className="fs-5"
+              onClick={submitCar}
+            >
+              Submit changes
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+
+      <InputGroup size="lg" className="my-2">
+        <InputGroup.Text>Model of car : </InputGroup.Text>
+        <Form.Control
+          onChange={(e) => setModel(e.target.value)}
+          defaultValue={model}
+          type="number"
+        />
+      </InputGroup>
+
+      <InputGroup size="lg" className="my-2">
+        <InputGroup.Text>Make of car : </InputGroup.Text>
+        <Form.Control
+          onChange={(e) => setMake(e.target.value)}
+          defaultValue={make}
+          type="text"
+        />
+      </InputGroup>
+
+      <InputGroup size="lg" className="my-2">
+        <InputGroup.Text>Registration number : </InputGroup.Text>
+        <Form.Control
+          onChange={(e) => setRegistrationNumber(e.target.value)}
+          defaultValue={registrationNumber}
+          type="text"
+        />
+      </InputGroup>
+
+      <InputGroup size="lg" className="my-2">
+        <InputGroup.Text>Owner name : </InputGroup.Text>
+        <Form.Control
+          onChange={(e) => setOwner(e.target.value)}
+          defaultValue={owner}
+          type="text"
+        />
+      </InputGroup>
+    </Container>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import CarList from "./components/CarList.js";
 import AddCar from "./components/AddCar.js";
 import EditCar from "./components/EditCar.js";
@@ -10,11 +11,13 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<CarList />} />
-        <Route path="/add" element={<AddCar />} />
-        <Route path="/edit/:id" element={<EditCar />} />
-      </Routes>
+      <Container className="my-2 fs-3">
+        <Routes>
+          <Route path="/" element={<CarList />} />
+          <Route path="/add" element={<AddCar />} />
+          <Route path="/edit/:id" element={<EditCar />} />
+        </Routes>
+      </Container>
     </BrowserRouter>
   );
 }

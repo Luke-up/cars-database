@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect } from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
 
 function CarList() {
   const [allCars, setAllCars] = React.useState([]);
@@ -36,16 +36,23 @@ function CarList() {
 
   return (
     <div>
-      <h1>Hello List of cars</h1>
-      <select onChange={(e) => setYear(e.target.value)}>
-        <option value={" "}>All cars</option>
-        <option value={20}>under 20 years</option>
-        <option value={15}>under 15 years</option>
-        <option value={10}>under 10 years</option>
-        <option value={5}>under 5 years</option>
-        <option value={3}>under 3 years</option>
-      </select>
-      <table>
+      <Container className="bg-secondary rounded py-2 px-2">
+        <Row>
+          <Col className="text-light fs-4">Showing Car database</Col>
+          <Col>
+            <Form.Select onChange={(e) => setYear(e.target.value)}>
+              <option value={""}>All cars in database</option>
+              <option value={20}>All cars under 20 years</option>
+              <option value={15}>All cars under 15 years</option>
+              <option value={10}>All cars under 10 years</option>
+              <option value={5}>All cars under 5 years</option>
+              <option value={3}>All cars under 3 years</option>
+            </Form.Select>
+          </Col>
+        </Row>
+      </Container>
+
+      <Table>
         <thead>
           <tr>
             <th>Model</th>
@@ -64,20 +71,28 @@ function CarList() {
                 <td>{car.registrationNumber}</td>
                 <td>{car.owner}</td>
                 <td>
-                  <button
+                  <Button
+                    variant="danger"
                     onClick={() => {
                       deleteCar(car._id);
                     }}
                   >
                     Delete
-                  </button>
-                  <Link to={{ pathname: "/edit/" + car._id }}>Edit</Link>
+                  </Button>
+                  <Button variant="info">
+                    <Link
+                      className="text-decoration-none text-dark"
+                      to={{ pathname: "/edit/" + car._id }}
+                    >
+                      Edit
+                    </Link>
+                  </Button>
                 </td>
               </tr>
             );
           })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
