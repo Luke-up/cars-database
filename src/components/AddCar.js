@@ -21,7 +21,7 @@ function AddCar() {
         .post("http://localhost:5000/cars/add", newCar)
         .then((res) => console.log(res.data));
 
-      // window.location = "/";
+      window.location = "/";
     } else {
       alert("Please fill out all the information.");
     }

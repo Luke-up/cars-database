@@ -7,8 +7,6 @@ function Navigation() {
       <Container>
         <Link to={"/"}>List all</Link>
         <Link to={"/add"}>Add</Link>
-        <Link to={"/edit"}>Edit</Link>
-        <Link to={"/editMulti"}>Multi-Edit</Link>
       </Container>
     </Navbar>
   );

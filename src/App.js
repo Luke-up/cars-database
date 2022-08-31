@@ -3,18 +3,17 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CarList from "./components/CarList.js";
 import AddCar from "./components/AddCar.js";
 import EditCar from "./components/EditCar.js";
-import EditMultiple from "./components/EditMultiple.js";
 import Navigation from "./components/Navigation.js";
 
 function App() {
+  const [id, setId] = React.useState("");
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
         <Route path="/" element={<CarList />} />
         <Route path="/add" element={<AddCar />} />
-        <Route path="/edit" element={<EditCar />} />
-        <Route path="/editMulti" element={<EditMultiple />} />
+        <Route path="/edit/:id" element={<EditCar />} />
       </Routes>
     </BrowserRouter>
   );
