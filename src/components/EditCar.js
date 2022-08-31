@@ -1,13 +1,16 @@
-import React, { useEffect, useParams } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Container, InputGroup, Form, Button, Row, Col } from "react-bootstrap";
 
+//Function renders form for editing car objects individually
 function EditCar() {
+  //Response from fetch method is stored in State
   const [model, setModel] = React.useState();
   const [make, setMake] = React.useState("");
   const [registrationNumber, setRegistrationNumber] = React.useState("");
   const [owner, setOwner] = React.useState("");
 
+  //Function uses axios get method to find car object in database
   useEffect(() => {
     axios
       .get(
@@ -24,6 +27,7 @@ function EditCar() {
       });
   }, []);
 
+  //Function sends editted object to server with axios post method
   function submitCar() {
     if ((model, make, registrationNumber, owner)) {
       const newCar = {
@@ -45,6 +49,7 @@ function EditCar() {
     }
   }
 
+  //Renders form elements for car data input
   return (
     <Container>
       <Container className="bg-secondary rounded py-2 px-2">

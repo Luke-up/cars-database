@@ -6,8 +6,9 @@ import AddCar from "./components/AddCar.js";
 import EditCar from "./components/EditCar.js";
 import Navigation from "./components/Navigation.js";
 
+//Function renders navigation which has links to the separate Routes
+//Edit route takes an id as a parameter which is used in the fetch call inside the component
 function App() {
-  const [id, setId] = React.useState("");
   return (
     <BrowserRouter>
       <Navigation />

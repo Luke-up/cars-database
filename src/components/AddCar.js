@@ -2,12 +2,15 @@ import React from "react";
 import axios from "axios";
 import { Container, InputGroup, Form, Button, Row, Col } from "react-bootstrap";
 
+//Function renders form for adding new car object to the database
 function AddCar() {
+  //Form elements save input to state
   const [model, setModel] = React.useState();
   const [make, setMake] = React.useState("");
   const [registrationNumber, setRegistrationNumber] = React.useState("");
   const [owner, setOwner] = React.useState("");
 
+  //Function complies new car object from data in State
   function submitCar() {
     if ((model, make, registrationNumber, owner)) {
       const newCar = {
@@ -16,8 +19,7 @@ function AddCar() {
         registrationNumber: registrationNumber,
         owner: owner,
       };
-      console.log(newCar);
-
+      //function uses axios post method to add object to database
       axios
         .post("http://localhost:5000/cars/add", newCar)
         .then((res) => console.log(res.data));
@@ -28,6 +30,7 @@ function AddCar() {
     }
   }
 
+  //Renders form for car data inputs
   return (
     <Container>
       <Container className="bg-secondary rounded py-2 px-2">

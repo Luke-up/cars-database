@@ -3,11 +3,17 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
 
+//Function renders list of all cars in the database
 function CarList() {
+  //State is used to contain all car objects returned from fetch method
   const [allCars, setAllCars] = React.useState([]);
+  //State is used to hold the maximum age of displayed cars
+  //Age of the cars is set with select element above the table
   const [year, setYear] = React.useState("");
 
+  //UseEffect fetches the cars object from the server
   useEffect(() => {
+    //Age of the cars is calculated by the current year minus the chosen amount of years
     const today = new Date();
     const thisYear = today.getFullYear();
     let searchYears;
@@ -16,6 +22,7 @@ function CarList() {
     } else {
       searchYears = "";
     }
+    //Fetch call with the axios library get method
     axios
       .get("http://localhost:5000/cars" + searchYears)
       .then((res) => {
@@ -27,6 +34,7 @@ function CarList() {
       });
   }, [year]);
 
+  //Function deletes car from the database as well as State in this component
   function deleteCar(id) {
     axios
       .delete("http://localhost:5000/cars/delete/" + id)
@@ -34,6 +42,9 @@ function CarList() {
       .then(setAllCars(allCars.filter((car) => car._id !== id)));
   }
 
+  //Renders table of all cars in the database
+  //Edit button links to separate Route and passes the id of the selected object
+  //Via the url parameters
   return (
     <div>
       <Container className="bg-secondary rounded py-2 px-2">

@@ -1,6 +1,8 @@
-import { Nav, Container, Row, Col } from "react-bootstrap";
+import { Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+//Function renders navigation element on top of page
+//Links opperate different routes in app.js
 function Navigation() {
   return (
     <Container>
