@@ -20,9 +20,7 @@ function AddCar() {
         owner: owner,
       };
       //function uses axios post method to add object to database
-      axios
-        .post("http://localhost:5000/cars/add", newCar)
-        .then((res) => console.log(res.data));
+      axios.post("/cars/add", newCar).then((res) => console.log(res.data));
 
       window.location = "/";
     } else {

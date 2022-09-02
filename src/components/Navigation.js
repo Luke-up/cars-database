@@ -29,6 +29,14 @@ function Navigation() {
             Add
           </Link>
         </Nav.Item>
+        <Nav.Item>
+          <Link
+            className="text-decoration-none text-light border border-light rounded py-2 px-4"
+            to={"/multiple"}
+          >
+            Edit Multiple
+          </Link>
+        </Nav.Item>
       </Nav>
     </Container>
   );

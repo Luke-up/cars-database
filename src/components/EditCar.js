@@ -13,9 +13,7 @@ function EditCar() {
   //Function uses axios get method to find car object in database
   useEffect(() => {
     axios
-      .get(
-        "http://localhost:5000/cars/edit/" + window.location.pathname.slice(6)
-      )
+      .get("/cars/edit/" + window.location.pathname.slice(6))
       .then((res) => {
         setModel(res.data.model);
         setMake(res.data.make);
@@ -37,11 +35,7 @@ function EditCar() {
         owner: owner,
       };
       axios
-        .post(
-          "http://localhost:5000/cars/update/" +
-            window.location.pathname.slice(6),
-          newCar
-        )
+        .post("/cars/update/" + window.location.pathname.slice(6), newCar)
         .then((res) => console.log(res.data));
       window.location = "/";
     } else {

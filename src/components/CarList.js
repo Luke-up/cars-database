@@ -24,7 +24,7 @@ function CarList() {
     }
     //Fetch call with the axios library get method
     axios
-      .get("http://localhost:5000/cars" + searchYears)
+      .get("/cars" + searchYears)
       .then((res) => {
         setAllCars(res.data);
         console.log(res.data);
@@ -37,7 +37,7 @@ function CarList() {
   //Function deletes car from the database as well as State in this component
   function deleteCar(id) {
     axios
-      .delete("http://localhost:5000/cars/delete/" + id)
+      .delete("/cars/delete/" + id)
       .then((res) => console.log(res.data))
       .then(setAllCars(allCars.filter((car) => car._id !== id)));
   }
@@ -53,11 +53,11 @@ function CarList() {
           <Col>
             <Form.Select onChange={(e) => setYear(e.target.value)}>
               <option value={""}>All cars in database</option>
-              <option value={20}>All cars under 20 years</option>
-              <option value={15}>All cars under 15 years</option>
-              <option value={10}>All cars under 10 years</option>
-              <option value={5}>All cars under 5 years</option>
-              <option value={3}>All cars under 3 years</option>
+              <option value={20}>All cars over 20 years</option>
+              <option value={15}>All cars over 15 years</option>
+              <option value={10}>All cars over 10 years</option>
+              <option value={5}>All cars over 5 years</option>
+              <option value={3}>All cars over 3 years</option>
             </Form.Select>
           </Col>
         </Row>

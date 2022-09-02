@@ -5,6 +5,7 @@ import CarList from "./components/CarList.js";
 import AddCar from "./components/AddCar.js";
 import EditCar from "./components/EditCar.js";
 import Navigation from "./components/Navigation.js";
+import MultiEdit from "./components/MultiEdit.js";
 
 //Function renders navigation which has links to the separate Routes
 //Edit route takes an id as a parameter which is used in the fetch call inside the component
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<CarList />} />
           <Route path="/add" element={<AddCar />} />
           <Route path="/edit/:id" element={<EditCar />} />
+          <Route path="/multiple" element={<MultiEdit />} />
         </Routes>
       </Container>
     </BrowserRouter>
